@@ -2,63 +2,106 @@
 
 ## Description
 
-In this challenge, you build a real wise-guy application. _Dad jokes_ are all the rage these days. Currently the application is trying to receive some `Dad Jokes`, however we are locked out.
+In this challenge, you build a real wise-guy application. _Dad jokes_ are all
+the rage these days. Currently the application is trying to receive some
+`Dad Jokes`, however we are locked out.
 
 ## Instructions
 
-**Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
+**Read these instructions carefully. Understand exactly what is expected
+_before_ starting this Sprint Challenge.**
 
-This is an individual assessment, please work on it alone. It is an opportunity to demonstrate proficiency in the concepts and objectives introduced and practiced in preceding days.
+This is an individual assessment, please work on it alone. It is an opportunity
+to demonstrate proficiency in the concepts and objectives introduced and
+practiced in preceding days.
 
-If the instructions are not clear, please seek support from your TL and Instructor on Slack.
+If the instructions are not clear, please seek support from your TL and
+Instructor on Slack.
 
 The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+-  [ ] Create a forked copy of this project.
+-  [ ] Add your _Team Lead_ as collaborator on Github.
+-  [ ] Clone your forked version of the Repository.
+-  [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+-  [ ] Implement the project on this Branch, committing changes regularly.
+-  [ ] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge `firstName-lastName` branch into `master` on your fork. **Please don't make Pull Requests against Lambda's repository**.
-- [ ] Please don't merge your own pull request.
-- [ ] Add your _Team Lead_ as a Reviewer on the Pull-request
-- [ ] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
+-  [ ] Submit a Pull-Request to merge `firstName-lastName` branch into `master`
+       on your fork. **Please don't make Pull Requests against Lambda's
+       repository**.
+-  [ ] Please don't merge your own pull request.
+-  [ ] Add your _Team Lead_ as a Reviewer on the Pull-request
+-  [ ] Your _Team Lead_ will count the challenge as done by merging the branch
+       into _master_.
 
 ## Commits
 
-Commit your code regularly and use descriptive messages. This helps both you (in case you ever need to return to old code) and your Team Lead.
+Commit your code regularly and use descriptive messages. This helps both you (in
+case you ever need to return to old code) and your Team Lead.
 
 ## Self-Study/Essay Questions
 
-Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
+Demonstrate your understanding of this week's concepts by answering the
+following free-form questions. Edit this document to include your answers after
+each question. Make sure to leave a blank line above and below your answer so it
+is clear and easy to read by your project manager.
 
-- [ ] What is the purpose of using _sessions_?
+-  [ ] **What is the purpose of using _sessions_?**
 
-- [ ] What does bcrypt do to help us store passwords in a secure manner.
+-  Sessions are used to allow a server to store information about a client. We
+   have used them to persist authentication info so there is no need to re-enter
+   credentials on every new request the client makes to the server. They work
+   alongside cookies to store the data and pass it between the client and
+   server.
 
-- [ ] What does bcrypt do to slow down attackers?
+-  [ ] **What does bcrypt do to help us store passwords in a secure manner.**
 
-- [ ] What are the three parts of the JSON Web Token?
+-  Bcrypt adds password hashing functionality to the user registration. It takes
+   the password and puts it through a hashing algorithm multiple times to keep
+   the data secure.
+
+-  [ ] **What does bcrypt do to slow down attackers?**
+
+-  It implements an algorithm that hashes the info multiple times (rounds) so
+   that hackers need to have the hash, know the algorithm used, and how many
+   rounds are used before they can duplicate the user’s credentials.
+
+-  [ ] **What are the three parts of the JSON Web Token?**
+
+-  The header - contains the algorithm with the token type.
+-  The payload - includes claims information or other data that we’d like to
+   store in the token. Most likely a user id.
+-  The signature - Needs to be a string by base64 encoding the header and
+   payload together - then signs it with a secret.
+-  Sample JWT -
+   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 ## Minimum Viable Product
 
-Implement an User Authentication System. Hash user's passwords before saving them to the database. Use `JSON Web Tokens` or `Sessions and Cookies` to persist authentication across requests.
+Implement an User Authentication System. Hash user's passwords before saving
+them to the database. Use `JSON Web Tokens` or `Sessions and Cookies` to persist
+authentication across requests.
 
-- [ ] Implement the `register` and `login` functionality inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
-- [ ] Implement the `authenticate` middleware inside `/auth/authenticate-middleware.js`.
-- [ ] Write a **minimum o 2 tests** per API endpoint. Write more tests if you have time.
+-  [ ] Implement the `register` and `login` functionality inside
+       `/auth/auth-router.js`. A `user` has `username` and `password`. Both
+       properties are required.
+-  [ ] Implement the `authenticate` middleware inside
+       `/auth/authenticate-middleware.js`.
+-  [ ] Write a **minimum o 2 tests** per API endpoint. Write more tests if you
+       have time.
 
-**Note**: the database already has the users table, but if you run into issues, the migrations are available.
+**Note**: the database already has the users table, but if you run into issues,
+the migrations are available.
 
 ## Stretch Problem
 
 Build a front end to show the jokes.
 
-- [ ] Add a React client that connects to the API and has pages for `Sign Up`, `Sign In` and showing a list of `Jokes`.
-- [ ] Once you have the functionality down, style it!
+-  [ ] Add a React client that connects to the API and has pages for `Sign Up`,
+       `Sign In` and showing a list of `Jokes`.
+-  [ ] Once you have the functionality down, style it!
